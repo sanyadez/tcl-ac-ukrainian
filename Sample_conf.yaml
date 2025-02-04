@@ -14,7 +14,7 @@ substitutions:
 packages:
   remote_package:
     url: https://github.com/sanyadez/tcl-ac-ukrainian.git
-    ref: master
+    ref: main
     files:
       - packages/core.yaml
     refresh: 30s
