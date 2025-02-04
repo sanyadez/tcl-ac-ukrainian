@@ -1,0 +1,43 @@
+
+substitutions:
+# Унікальне імʼя пристрою, використовувати лише латинські символи та без пробілів
+  device_name: tclac
+# Імʼя для відображення
+  humanly_name: TCL Air Conditioner
+# Налаштування WiFi
+  wifi_ssid: !secret wifi_ssid
+  wifi_password: !secret wifi_password
+# Пароль до точки доступу, виглядатиме "{device_name} Fallback Hotspot"
+  recovery_pass: mKSasBdt7DAj
+# Пароль для OTA
+  ota_pass: 90cf525a444c8bb2cbf917bc2c2fa058
+# Ключ для Home Assistant API
+  api_key: lmUowsWs1wsSfJqLFsA6PisHSx4Y1G+iu7V3PDIqpXk=
+# Визначення пінів UART:
+  uart_rx: GPIO3
+  uart_tx: GPIO1
+# Підключення LED
+  receive_led: GPIO6
+  transmit_led: GPIO4
+
+
+packages:
+  remote_package:
+    url: https://github.com/sanyadez/tcl-ac-ukrainian.git
+    ref: master
+    files:
+      - packages/core.yaml # Ядро, не прибирати
+      # Додатковий пакет для LED 
+      # - packages/leds.yaml
+    refresh: 30s
+
+
+# ESP-01S
+esp8266:
+  board: esp01_1m
+
+# Свідлодіодний модуль вмикається наступним кодом
+#status_led:
+#  pin:
+#    number: GPIO5
+#    inverted: false
